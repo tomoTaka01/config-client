@@ -6,16 +6,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-//@Refresh
 public class ConfigController {
 
     @Value("${app-config.config-key}")
     private String configVal ;
 
+    @Value("${app-api.retry-count}")
+    private int retryCount;
+
     @RequestMapping("/")
     @ResponseBody
     public String getConfig(){
 
-        return configVal;
+        String response = String.format("[%s], [%d]", configVal, retryCount);
+        return response;
     }
 }
