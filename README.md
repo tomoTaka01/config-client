@@ -3,6 +3,48 @@
   * Cloud Config Client Sample
   * to see the server https://github.com/tomoTaka01/config-server
 
+### for config server with vault backend
+  * to see for server https://github.com/tomoTaka01/config-server/tree/feature/vault
+
+```bootstrap.yml
+spring:
+  application:
+   cloud:
+   config:
+     token: your-vault-token
+```
+
+```ConfigController.java
+@Controller
+@RefreshScope
+public class ConfigController {
+  @Value("${foo}")
+   private String vaultFoo;
+   @Value("${baz}")
+private String vaultBaz;
+   @RequestMapping("/show/vaultconfig")
+       @ResponseBody
+       public String getVaultConfig() {
+           String config = String.format("vault:foo=[%s], baz=[%s]", vaultFoo, vaultBaz);
+           return config;
+       }
+...
+}
+```
+
+```
+curl "http://localhost:8080/show/vaultconfig"
+```
+
+The result is 
+```
+vault:foo=[bar], baz=[bam]%
+```
+
+---
+
+```
+### for config server with git file 
   * for config setting file and server uri
     * bootstrap.yml
 ```yml
