@@ -1,10 +1,7 @@
 package com.example.configclient.config;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
-
-@Configuration
-@ConfigurationProperties("app-config")
+//@Configuration
+//@ConfigurationProperties("app-config")
 public class AppConfig {
     private String configKey1;
     private String configKey2;

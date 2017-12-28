@@ -3,7 +3,8 @@ spring:
     name: app-config,app-api
   cloud:
     config:
-      uri: http://localhost:8888
+#     uri: http://localhost:8888
+      token: b51bcacd-3a07-e768-8d20-0be9a5e7ebd7
 management:
   security:
     enabled: false
